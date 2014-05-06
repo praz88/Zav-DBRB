@@ -1,0 +1,12 @@
+After checking out the project:
+
+Open PHPMyAdmin by right clicking on Wamp icon at the right bottom of your screen
+Now click on "Import" tab
+Click on "Choose file"
+Now traverse to the C:/wamp/www/Zav-DBRB directory
+Select dbrb.sql and import
+Now your database is ready
+
+Go to  C:/wamp/www/Zav-DBRB/app/config/database.php
+In this file change database name to "dbrb"
+You are good to go!
