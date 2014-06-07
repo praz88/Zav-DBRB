@@ -5,6 +5,6 @@
  * Date: 7/5/14
  * Time: 12:32 AM
  */
-class Book extends AppModel 
+class Request extends AppModel
 {
 }
