@@ -18,7 +18,7 @@ echo "<table class='table table-striped'>";
             echo "<tr>";
                 echo "<td>{$index['Book']['id']}</td>";
                 //echo "<td>{$index['Book']['title']}</td>";
-        echo "<td>{$this->Html->link($index['Book']['title'],array('controller' => 'books', 'action' => 'request', $index['Book']['id']))}</td>";
+        echo "<td>{$this->Html->link($index['Book']['title'],array('controller' => 'books', 'action' => '../request', $index['Book']['id']))}</td>";
                 echo "<td>{$index['Book']['holder']}</td>";
                  
             echo "</tr>";

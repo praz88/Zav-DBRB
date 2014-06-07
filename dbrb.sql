@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 06, 2014 at 07:38 PM
+-- Generation Time: Jun 07, 2014 at 08:07 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -25,6 +25,20 @@ USE `dbrb`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admins`
+--
+
+CREATE TABLE IF NOT EXISTS `admins` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `books`
 --
 
@@ -37,14 +51,46 @@ CREATE TABLE IF NOT EXISTS `books` (
   `requester` varchar(50) DEFAULT 'Not yet requested',
   `receiver` varchar(50) DEFAULT 'Not received by anyone',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `books`
 --
 
 INSERT INTO `books` (`id`, `title`, `isbn`, `donator`, `holder`, `requester`, `receiver`) VALUES
-(1, 'Let us C', '9787121092671', 'Jain college of Engineering', 'Praz', 'Anju', 'Not yet received');
+(1, 'Let us C', '9787121092671', 'Jain college of Engineering', 'Praz', 'Anju', 'Not yet received'),
+(2, 'Hahahaha', NULL, 'Trasha', 'Trasha', 'Not yet requested', 'Not received by anyone'),
+(3, 'Yoyoyoyo', '', 'Surbhi', 'Surbhi', 'Not yet requested', 'Not received by anyone'),
+(4, 'Bababababa', NULL, 'Anju', 'Anju', 'Not yet requested', 'Not received by anyone'),
+(5, 'AHAHAHHA', NULL, 'Smriti', 'Smriti', 'Not yet requested', 'Not received by anyone');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `donates`
+--
+
+CREATE TABLE IF NOT EXISTS `donates` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `requests`
+--
+
+CREATE TABLE IF NOT EXISTS `requests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
