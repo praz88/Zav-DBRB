@@ -12,7 +12,7 @@ class DonateController extends AppController {
 
     public function index() {
 
-        $this->set('donate', $this->Donate->find('all'));
+$this->set('donates', $this->Donate->find('all'));
     }
 
 }
