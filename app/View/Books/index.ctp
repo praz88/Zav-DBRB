@@ -26,51 +26,18 @@ echo "<table class='table table-striped'>";
 echo "</table>";
 
 // pagination section
-  
-        
-    echo "<div class='row pager'>";
-        // the 'first' page button
-        echo "<div class='col-md-2'>";
-        echo $paginator->first("First");
-        echo "</div>";
-        // 'prev' page button, 
-        // we can check using the paginator hasPrev() method if there's a previous page
-        // save with the 'next' page button
-        
-        if($paginator->hasPrev())
-        {
-            echo "<div class='col-md-2'>";
-            echo $paginator->prev("Prev");
-            echo "</div>";
-        }
-       
-        // the 'number' page buttons
-        echo "<div class='col-md-2'>";
-        echo $paginator->numbers(array('modulus' => 4));
-        echo "</div>";
-        // for the 'next' button
-         
-        if($paginator->hasNext())
-        {   
-            echo "<div class='col-md-2'>";
-            echo $paginator->next("Next");
-            echo "</div>";
-        }        
 
 
-        // the 'last' page button
-        echo "<div class='col-md-2'>";
-        echo $paginator->last("Last");
-        echo "</div>";
-
-    echo "</div>";
-    
- echo "</div>";
-    
-}
-
-// tell the user there's no records found
-else{
-    echo "No Books found.";
 }
 ?>
+<div class="pagination pagination-large" style="margin-left:38%">
+    <ul class="pagination">
+            <?php
+                echo $paginator->prev(__('prev'), array('tag' => 'li'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a'));
+                echo $paginator->numbers(array('separator' => '','currentTag' => 'a', 'currentClass' => 'active','tag' => 'li','first' => 1));
+                echo $paginator->next(__('next'), array('tag' => 'li','currentClass' => 'disabled'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a'));
+            ?>
+        </ul>
+    </div>
+    </div>
+</div>

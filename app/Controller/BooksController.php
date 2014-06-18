@@ -7,7 +7,6 @@
  */
 
 class BooksController extends AppController {
-    public $helpers = array('Html', 'Form');
     public $components = array('Paginator');
 
     public function index() {
