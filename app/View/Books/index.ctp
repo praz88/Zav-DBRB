@@ -8,7 +8,7 @@ echo "<table class='table table-striped'>";
         echo "<thead>";    
             // in the sort method, ther first parameter is the same as the column name in our table
             // the second parameter is the header label we want to display in the view
-            echo "<th>" . $paginator->sort('id', 'ID') . "</th>";
+            echo "<th></th>";
             echo "<th>" . $paginator->sort('title', 'Title') . "</th>";
             echo "<th>" . $paginator->sort('holder', 'Holder') . "</th>";
         
@@ -16,10 +16,10 @@ echo "<table class='table table-striped'>";
         // loop through the book's records
         foreach( $books as $index ){
             echo "<tr>";
-                echo "<td>{$index['Book']['id']}</td>";
-                //echo "<td>{$index['Book']['title']}</td>";
-        echo "<td>{$this->Html->link($index['Book']['title'],array('controller' => 'books', 'action' => '../request', $index['Book']['id']))}</td>";
+            	echo "<td><img src=\"http://covers.openlibrary.org/b/isbn/{$index['Book']['isbn']}-S.jpg\" /></td>";
+				echo "<td>{$index['Book']['title']}</td>";
                 echo "<td>{$index['Book']['holder']}</td>";
+				echo "<td id=\"bookInfo-{$index['Book']['isbn']}\"><a href='#' id='getBook' onclick=\"getInfo('{$index['Book']['isbn']}')\">Get Info</a></td>";
                  
             echo "</tr>";
         }  

@@ -29,7 +29,8 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
     echo $this->Html->script(array(
         '/js/jquery-1.11.1.min.js',
         '/js/cakebootstrap.js',
-        '/js/bootstrap.min.js'
+        '/js/bootstrap.min.js',
+        '/js/find-book.js'
     ));
     echo $this->Html->css(array('bootstrap','layout'));
     ?>
