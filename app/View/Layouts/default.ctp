@@ -21,26 +21,27 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 <!DOCTYPE html>
 <html>
 <head>
-	<?php echo $this->Html->charset(); ?>
-	<title>
-	Zav-DBRB
-	</title>
-	<?php
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <?php echo $this->Html->charset(); ?>
+  <title>
+  Zav-DBRB
+  </title>
+  <?php
     echo $this->Html->script(array(
         '/js/jquery-1.11.1.min.js',
         '/js/cakebootstrap.js',
         '/js/bootstrap.min.js',
         '/js/find-book.js'
     ));
-    echo $this->Html->css(array('bootstrap','layout'));
+    echo $this->Html->css(array('bootstrap.min','bootstrap-theme.min','layout'));
     ?>
 
 
 </head>
 <body style="background-color: #efefef">
 
-	<div id="container-fluid">
-		<div id="header">
+  <div id="container-fluid">
+    <div id="header">
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
           <div class="container-fluid" style="max-width: 1170px;">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -70,21 +71,21 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
       </nav>
-		</div>
+    </div>
 
-		<div id="content"  class="container-fluid" style="margin-top:50px;min-height: 700px;max-width: 1170px;background-color: #ffffff">
+    <div id="content"  class="container-fluid" style="margin-top:50px;min-height: 700px;max-width: 1170px;background-color: #ffffff">
 
-			<?php echo $this->Session->flash(); ?>
+      <?php echo $this->Session->flash(); ?>
 
-			<?php echo $this->fetch('content'); ?>
-		</div>
-		<footer>
+      <?php echo $this->fetch('content'); ?>
+    </div>
+    <footer>
         <div class="foot-fixed-bottom">
         <div class="container" style="text-align:center;">
         <p style="font-color:white">© zavfoundation.com • Bangalore 2014</p></div>
         </div>
         </footer>
-	</div>
+  </div>
 
 </body>
 </html>

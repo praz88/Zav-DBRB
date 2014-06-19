@@ -1,29 +1,27 @@
 <?php
 $paginator = $this->Paginator;
-echo "<div class='container'>";
 echo "<h1> Books Availaible</h1>";
 if($books){
-echo "<table class='table table-striped'>";
         // our table header, we can sort the data Book the paginator sort() method!
-        echo "<thead>";    
+        echo "<div class='row'>";    
             // in the sort method, ther first parameter is the same as the column name in our table
             // the second parameter is the header label we want to display in the view
-            echo "<th></th>";
-            echo "<th>" . $paginator->sort('title', 'Title') . "</th>";
-            echo "<th>" . $paginator->sort('holder', 'Holder') . "</th>";
+            echo "<div class='col-md-3'></div>";
+            echo "<div class='col-md-3'>" . $paginator->sort('title', 'Sort by Title') . "</div>";
+            echo "<div class='col-md-3'>" . $paginator->sort('holder', 'Sort by Holder') . "</div>";
+            echo "<div class='col-md-3'></div>";
         
-        echo "</thead>";
+        echo "</div><hr/>";
         // loop through the book's records
         foreach( $books as $index ){
-            echo "<tr>";
-            	echo "<td><img src=\"http://covers.openlibrary.org/b/isbn/{$index['Book']['isbn']}-S.jpg\" /></td>";
-				echo "<td>{$index['Book']['title']}</td>";
-                echo "<td>{$index['Book']['holder']}</td>";
-				echo "<td id=\"bookInfo-{$index['Book']['isbn']}\"><a href='#' id='getBook' onclick=\"getInfo('{$index['Book']['isbn']}')\">Get Info</a></td>";
+            echo "<div class='row'>";
+            	echo "<div class='col-md-3'><img src=\"http://covers.openlibrary.org/b/isbn/{$index['Book']['isbn']}-S.jpg\" /></div>";
+				echo "<div class='col-md-3'>{$index['Book']['title']}</div>";
+                echo "<div class='col-md-3'>{$index['Book']['holder']}</div>";
+				echo "<div class='col-md-3' id=\"bookInfo-{$index['Book']['isbn']}\"><a href='#' id='getBook' onclick=\"getInfo('{$index['Book']['isbn']}')\">Get Info</a></div>";
                  
-            echo "</tr>";
-        }  
-echo "</table>";
+            echo "</div><hr/>";
+        } 
 
 // pagination section
 
