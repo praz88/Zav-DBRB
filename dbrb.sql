@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 07, 2014 at 08:07 PM
+-- Generation Time: Jun 20, 2014 at 11:12 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -46,51 +46,32 @@ CREATE TABLE IF NOT EXISTS `books` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(50) DEFAULT NULL,
   `isbn` varchar(50) DEFAULT NULL,
-  `donator` varchar(50) DEFAULT NULL,
+  `donatorName` varchar(50) DEFAULT NULL,
+  `donatorEmail` varchar(100) NOT NULL,
+  `donatorMobile` varchar(100) NOT NULL,
   `holder` varchar(50) DEFAULT NULL,
-  `requester` varchar(50) DEFAULT 'Not yet requested',
-  `receiver` varchar(50) DEFAULT 'Not received by anyone',
+  `adminName` varchar(100) NOT NULL,
+  `requesterName` varchar(50) DEFAULT 'Not yet requested',
+  `requesterEmail` varchar(100) NOT NULL,
+  `requesterMobile` varchar(100) NOT NULL,
+  `requestDate` datetime DEFAULT NULL,
+  `donateDate` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL DEFAULT 'Available',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`id`, `title`, `isbn`, `donator`, `holder`, `requester`, `receiver`) VALUES
-(1, 'Let us C', '9787121092671', 'Jain college of Engineering', 'Praz', 'Anju', 'Not yet received'),
-(2, 'Hahahaha', NULL, 'Trasha', 'Trasha', 'Not yet requested', 'Not received by anyone'),
-(3, 'Yoyoyoyo', '', 'Surbhi', 'Surbhi', 'Not yet requested', 'Not received by anyone'),
-(4, 'Bababababa', NULL, 'Anju', 'Anju', 'Not yet requested', 'Not received by anyone'),
-(5, 'AHAHAHHA', NULL, 'Smriti', 'Smriti', 'Not yet requested', 'Not received by anyone');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `donates`
---
-
-CREATE TABLE IF NOT EXISTS `donates` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `requests`
---
-
-CREATE TABLE IF NOT EXISTS `requests` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+INSERT INTO `books` (`id`, `title`, `isbn`, `donatorName`, `donatorEmail`, `donatorMobile`, `holder`, `adminName`, `requesterName`, `requesterEmail`, `requesterMobile`, `requestDate`, `donateDate`, `status`) VALUES
+(8, 'Learn PHP', '0596005601', 'someone', 'someone@gmail.com', '+9199927273', '', '', 'Not yet requested', '', '', NULL, '', 'Donated'),
+(9, 'HP', '9785353031703', 'Me', 'M', '', NULL, '', 'Praz', 'pradfsdfsdf', 'zsfgdfgdf', NULL, '', 'Requested'),
+(10, 'xfgdfg', 'ddfg', 'dsgfdg', 'xdfhgdfm', 'lkmvclkm', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available'),
+(11, 'Game of thrones', '9780553386790', 'Rahul', 'rahulkhanna@gmail.com', '999388343254', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available'),
+(12, 'Learn PHP', '0596005601', 'PHP expert', 'php@google.com', '232435436', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available'),
+(13, 'Learn HTML', '1449319270', 'html guy', 'html@yahoo.com', '54359365665', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available'),
+(14, 'Learn coding', '8090466184', 'Aster', 'sdasd@sfsd.com', '3435365456456', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

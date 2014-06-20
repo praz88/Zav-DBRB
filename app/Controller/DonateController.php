@@ -26,22 +26,4 @@ class DonateController extends AppController {
         }
     }
 
-    public function insert(){
-        //insert will map directly to insert.ctp
-
-        if ($this->request->is('post'))
-        //post???
-        {
-            //Since you are using donate model within the controller donates, you dont have to explicitly load the model here
-            $this->Donate->create();
-            if ($this->Donate->save($this->request->data)) {
-                $this->Session->setFlash(__('The data has been saved'));
-                return $this->redirect(array('action' => 'index'));
-
-            } else {
-                $this->Session->setFlash(__('The data could not be saved. Please, try again.'));
-            }
-        }
-    }
-
 }

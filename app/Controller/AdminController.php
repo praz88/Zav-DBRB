@@ -65,7 +65,7 @@ class AdminController extends AppController
 
         }else{
             $book = $this->Book->find('first',
-                array('fields' => array('title','isbn','donator','holder','requester', 'receiver'),
+                array('fields' => array('title','isbn','donatorName', 'donatorEmail', 'donatorMobile','adminName','holder','requesterName', 'requesterEmail', 'requesterMobile', 'status'),
                     'conditions' => array('Book.id' => $id)
                 )
             );

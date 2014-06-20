@@ -8,7 +8,7 @@ if($books){
             // the second parameter is the header label we want to display in the view
             echo "<div class='col-md-3'></div>";
             echo "<div class='col-md-3'>" . $paginator->sort('title', 'Sort by Title') . "</div>";
-            echo "<div class='col-md-3'>" . $paginator->sort('holder', 'Sort by Holder') . "</div>";
+            echo "<div class='col-md-3'>" . $paginator->sort('status', 'Sort by availability status') . "</div>";
             echo "<div class='col-md-3'></div>";
         
         echo "</div><hr/>";
@@ -16,10 +16,24 @@ if($books){
         foreach( $books as $index ){
             echo "<div class='row'>";
             	echo "<div class='col-md-3'><img src=\"http://covers.openlibrary.org/b/isbn/{$index['Book']['isbn']}-S.jpg\" /></div>";
-				echo "<div class='col-md-3'>{$index['Book']['title']}</div>";
-                echo "<div class='col-md-3'>{$index['Book']['holder']}</div>";
-				echo "<div class='col-md-3' id=\"bookInfo-{$index['Book']['isbn']}\"><a href='#' id='getBook' onclick=\"getInfo('{$index['Book']['isbn']}')\">Get Info</a></div>";
-                 
+				echo "<div class='col-md-3'>Title: {$index['Book']['title']}</div>";
+                echo "<div class='col-md-3'>Status: {$index['Book']['status']}</div>";
+				echo "<div class='col-md-3' id=\"bookInfo-{$index['Book']['isbn']}\"><a href='#' id='getBook' onclick=\"getInfo('{$index['Book']['isbn']}')\">Get Book Info</a></div>";
+                echo "</div><div class='row'>";
+                echo "<div class='col-md-3'>Donated by: {$index['Book']['donatorName']}</div>";
+                if($index['Book']['status'] == "Donated"){
+                   echo "<div class='col-md-3'>Received by: {$index['Book']['requesterName']}</div>";
+                }else if($index['Book']['status'] == "Requested"){
+                echo "<div class='col-md-3'>Requested by: {$index['Book']['requesterName']}</div>";
+
+                }
+                else{
+                echo "<div class='col-md-3'>".$this->Form->postLink('Request',
+                                                        array('action' => '../request/index/', $index['Book']['id']),
+                                                        array('class'=>'button red', 'confirm' => 'Are you sure You wish to Request this book?'))."</td>";
+                                                echo "</div>";
+                }
+
             echo "</div><hr/>";
         } 
 

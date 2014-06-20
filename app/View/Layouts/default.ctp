@@ -59,7 +59,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <li><?php echo $this->Html->link('Books', array('action'=>'../books/')); ?></li>
-                <li><?php echo $this->Html->link('Request', array('action'=>'../request/')); ?></li>
                 <li><?php echo $this->Html->link('Donate', array('action'=>'../donate/')); ?></li>
                <li><?php echo $this->Html->link('Admin', array('action'=>'../admin/')); ?></li>
               </ul>
