@@ -3,7 +3,6 @@
 
 class AdminController extends AppController
 {
-    public $helpers = array('Html', 'Form');
     public $components = array('Paginator');
     // var $uses=array('Book');
     public function index()
