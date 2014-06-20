@@ -1,5 +1,6 @@
 <?php
 
+class RequestController extends AppController {
     public $components = array('Paginator');
     // var $uses=array('Book');
     public function index()
