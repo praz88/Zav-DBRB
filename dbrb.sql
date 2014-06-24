@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 20, 2014 at 11:12 PM
+-- Generation Time: Jun 24, 2014 at 08:45 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -57,21 +57,30 @@ CREATE TABLE IF NOT EXISTS `books` (
   `requestDate` datetime DEFAULT NULL,
   `donateDate` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL DEFAULT 'Available',
+  `stream` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`id`, `title`, `isbn`, `donatorName`, `donatorEmail`, `donatorMobile`, `holder`, `adminName`, `requesterName`, `requesterEmail`, `requesterMobile`, `requestDate`, `donateDate`, `status`) VALUES
-(8, 'Learn PHP', '0596005601', 'someone', 'someone@gmail.com', '+9199927273', '', '', 'Not yet requested', '', '', NULL, '', 'Donated'),
-(9, 'HP', '9785353031703', 'Me', 'M', '', NULL, '', 'Praz', 'pradfsdfsdf', 'zsfgdfgdf', NULL, '', 'Requested'),
-(10, 'xfgdfg', 'ddfg', 'dsgfdg', 'xdfhgdfm', 'lkmvclkm', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available'),
-(11, 'Game of thrones', '9780553386790', 'Rahul', 'rahulkhanna@gmail.com', '999388343254', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available'),
-(12, 'Learn PHP', '0596005601', 'PHP expert', 'php@google.com', '232435436', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available'),
-(13, 'Learn HTML', '1449319270', 'html guy', 'html@yahoo.com', '54359365665', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available'),
-(14, 'Learn coding', '8090466184', 'Aster', 'sdasd@sfsd.com', '3435365456456', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available');
+INSERT INTO `books` (`id`, `title`, `isbn`, `donatorName`, `donatorEmail`, `donatorMobile`, `holder`, `adminName`, `requesterName`, `requesterEmail`, `requesterMobile`, `requestDate`, `donateDate`, `status`, `stream`) VALUES
+(8, 'Learn PHP', '0596005601', 'someone', 'someone@gmail.com', '+9199927273', '', '', 'Not yet requested', '', '', NULL, '', 'Available', 'PUC and CET'),
+(9, 'HP', '9785353031703', 'Me', 'M', '', '', '', 'hihihi', 'hihihi@fdf.com', 'sdjggdfg', NULL, '', 'Requested', 'Commerce and Management'),
+(10, 'xfgdfg', 'ddfg', 'dsgfdg', 'xdfhgdfm', 'lkmvclkm', NULL, '', 'Not yet requested', '', '', NULL, '', 'Requested', 'Commerce and Management'),
+(11, 'Game of thrones', '9780553386790', 'Rahul', 'rahulkhanna@gmail.com', '999388343254', NULL, '', 'hihihi', 'hihihi@fdf.com', 'sdjggdfg', NULL, '', 'Requested', 'Engineering'),
+(12, 'Learn PHP', '0596005601', 'PHP expert', 'php@google.com', '232435436', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available', 'Non academic'),
+(13, 'Learn HTML', '1449319270', 'html guy', 'html@yahoo.com', '54359365665', NULL, '', 'hihihi', 'hihihi@fdf.com', 'sdjggdfg', NULL, '', 'Requested', 'PUC and CET'),
+(14, 'Learn coding', '8090466184', 'Aster', 'sdasd@sfsd.com', '3435365456456', NULL, '', 'Not yet requested', '', '', NULL, '', 'Requested', 'School'),
+(15, '', '', '', '', '', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available', ''),
+(16, '', '', '', '', '', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available', ''),
+(17, 'uouo', 'youou', 'ououou', 'uouou', 'uouou', NULL, '', 'Not yet requested', '', '', NULL, '', 'Available', ''),
+(18, NULL, NULL, NULL, '', '', NULL, '', 'hihihi', 'hihihi@fdf.com', 'sdjggdfg', NULL, '', 'Available', ''),
+(19, NULL, NULL, NULL, '', '', NULL, '', 'hihihi', 'hihihi@fdf.com', 'sdjggdfg', NULL, '', 'Available', ''),
+(20, NULL, NULL, NULL, '', '', NULL, '', 'hihihi', 'hihihi@fdf.com', 'sdjggdfg', NULL, '', 'Requested', ''),
+(21, NULL, NULL, NULL, '', '', NULL, '', 'hihihi', 'hihihi@fdf.com', 'sdjggdfg', NULL, '', 'Requested', ''),
+(22, NULL, NULL, NULL, '', '', NULL, '', 'hihihi', 'hihihi@fdf.com', 'sdjggdfg', NULL, '', 'Requested', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
