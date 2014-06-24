@@ -58,11 +58,17 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li><?php echo $this->Html->link('Books', array('action'=>'../books/')); ?></li>
+                <li><?php echo $this->Html->link('Books', array('action'=>'../books/index/status:Available/stream:School')); ?></li>
                 <li><?php echo $this->Html->link('Donate', array('action'=>'../donate/')); ?></li>
                <li><?php echo $this->Html->link('Admin', array('action'=>'../admin/')); ?></li>
               </ul>
 
+      <form class="navbar-form navbar-left" role="form" method="post" action="/dbrb/books/">
+        <div class="form-group">
+          <input type="text" class="form-control" name="data[Book][title]" placeholder="Book title or author">
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+      </form>
               <ul class="nav navbar-nav navbar-right">
                 <li></li>
                 <li><?php echo $this->Html->link('Contact', array('action'=>'../contact/')); ?></li>

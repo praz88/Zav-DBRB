@@ -18,7 +18,7 @@ class DonateController extends AppController {
         $this->Book->create();
         if ($this->Book->save($this->request->data)) {
             $this->Session->setFlash(__('The data has been saved'));
-            return $this->redirect(array('action' => 'index'));
+            return $this->redirect(array('action' => '../books/index/status:Available/stream:School'));
 
         } else {
             $this->Session->setFlash(__('The data could not be saved. Please, try again.'));

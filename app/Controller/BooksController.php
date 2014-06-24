@@ -7,15 +7,20 @@
  */
 
 class BooksController extends AppController {
-    public $components = array('Paginator');
+    public $components = array('Paginator','Search.Prg');
 
-    public function index() {
-        $this->paginate = array(
+    public function index(){
+
+        $this->Prg->commonProcess();
+        $this->Paginator->settings['conditions'] = $this->Book->parseCriteria($this->Prg->parsedParams());
+        $this->set('books', $this->Paginator->paginate());
+
+        /*$this->paginate = array(
             'paramType' => 'querystring',
             'limit' => 3,
         );
         $data = $this->paginate('Book');
-        $this->set('books', $data);
+        $this->set('books', $data);*/
     }
 
 }

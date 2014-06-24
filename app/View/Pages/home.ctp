@@ -2,9 +2,9 @@
 <html lang="en-US">
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="refresh" content="1;url=../Zav-DBRB/books">
+        <meta http-equiv="refresh" content="1;url=../dbrb/books/index/status:Available/stream:School">
         <script type="text/javascript">
-            window.location.href = "../Zav-DBRB/books"
+            window.location.href = "../dbrb/books/index/status:Available/stream:School"
         </script>
         <title>Page Redirection</title>
     </head>

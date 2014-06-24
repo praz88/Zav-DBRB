@@ -25,5 +25,9 @@
  font-size: 14px;
  margin: 0 12px 15px;
 }
+
+. submit-button{
+    margin-left: 9px;
+}
  
 /*that's all folks!*/

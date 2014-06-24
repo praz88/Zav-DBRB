@@ -8,9 +8,9 @@
        <?php echo $this->Form->input('status', array('value' =>"Requested", 'type' => 'hidden'));?>
        <?php echo $this->Form->input('donatorName', array('value' =>$books['Book']['donatorName'],'disabled' => 'disabled'));?>
        <?php echo $this->Form->input('holder', array('value' =>"Zav foundation", 'disabled' => 'disabled'));?>
-       <?php echo $this->Form->input('requesterName', array('value' =>$books['Book']['requesterName']));?>
-       <?php echo $this->Form->input('requesterEmail', array('value' =>$books['Book']['requesterEmail']));?>
-       <?php echo $this->Form->input('requesterMobile', array('value' =>$books['Book']['requesterMobile']));?>
+       <?php echo $this->Form->input('requesterName', array('value' =>$this->Session->read('Requester.name')));?>
+       <?php echo $this->Form->input('requesterEmail', array('value' =>$this->Session->read('Requester.email')));?>
+       <?php echo $this->Form->input('requesterMobile', array('value' =>$this->Session->read('Requester.mobile')));?>
     </fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>

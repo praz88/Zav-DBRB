@@ -7,4 +7,22 @@
  */
 class Book extends AppModel 
 {
+    public $actsAs = array(
+        'Search.Searchable'
+    );
+
+    public $filterArgs = array(
+        'status' => array(
+            'type' => 'like',
+            'field' => 'status'
+        ),
+        'stream' => array(
+			'type' => 'like',
+			'field' => 'stream'
+		),
+        'title' => array(
+            'type' => 'like',
+            'field' => 'title'
+        )
+    );
 }

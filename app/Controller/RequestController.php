@@ -11,8 +11,13 @@ class RequestController extends AppController {
             if ($this->request->is('post')) {
                 $this->Book->id = $id;
                 if ($this->Book->save($this->request->data)) {
+
+                    $this->Session->write('Requester.name', $this->request->data['Book']['requesterName']);
+                    $this->Session->write('Requester.email', $this->request->data['Book']['requesterEmail']);
+                    $this->Session->write('Requester.mobile', $this->request->data['Book']['requesterMobile']);
+
                     $this->Session->setFlash(__('The data has been saved'));
-                    return $this->redirect(array('action' => '../books'));
+                    return $this->redirect(array('action' => '../books/index/status:Available/stream:School'));
 
                 } else {
                     $this->Session->setFlash(__('The data could not be saved. Please, try again.'));
