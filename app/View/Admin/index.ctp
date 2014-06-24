@@ -13,7 +13,7 @@ if($books)
         echo "<div class='row'>";
             // in the sort method, ther first parameter is the same as the column name in our table
             // the second parameter is the header label we want to display in the view
-            echo "<div class='col-md-2'>" . $paginator->sort('title', 'Sort by Title') . "</div>";
+            echo "<div class='col-md-2'>" . $paginator->sort('stream', 'Sort by Stream') . "</div>";
             echo "<div class='col-md-2'>" . $paginator->sort('donatorName', 'Sort by Donator') . "</div>";
             echo "<div class='col-md-2'>" . $paginator->sort('requesterName', 'Sort by Requester') . "</div>";
             echo "<div class='col-md-2'>" . $paginator->sort('status', 'Sort by Status') . "</div>";
@@ -23,7 +23,7 @@ if($books)
         // loop through the book's records
         foreach( $books as $index ){
             echo "<div class='row'>";
-            	echo "<div class='col-md-3'><img src=\"http://covers.openlibrary.org/b/isbn/{$index['Book']['isbn']}-S.jpg\" /></div>";
+            	echo "<div class='col-md-3'>Stream: {$index['Book']['stream']}</div>";
 				echo "<div class='col-md-3'>Title: {$index['Book']['title']}</div>";
                 echo "<div class='col-md-3'>Donator: {$index['Book']['donatorName']}</div>";
                 echo "<div class='col-md-3'>Donator Email: {$index['Book']['donatorEmail']}</div>";
