@@ -1,15 +1,7 @@
+
 <?php
 $paginator = $this->Paginator;
-if($books){
-echo "<h1>".$books[0]['Book']['status']." ".$books[0]['Book']['stream']." books"."</h1>";
-echo "<hr/><h4> Select and click Go</h4>";
-}
-else
-{
-echo "<br/>";
-}
-
-
+echo "<hr/><div><h4> Select and click Go</h4>";
                                         echo "<div class='form-inline'><div class='form-group'>";
 	echo $this->Form->create();
 
@@ -26,21 +18,30 @@ if($books){
     }
     else{
 
-        echo "No books were found, select different commbination and click Go";
+
     	echo $this->Form->input('status', array('options' => array('Available'=>'Available', 'Donated'=>'Donated', 'Requested'=>'Requested'),
-                                                'selected' =>  'Available',
+                                                'selected' =>  $this->Session->read('Books.status'),
                                                 'label' => array('class' => 'control-label','text' => '')
                                                  ));
         echo $this->Form->input('stream', array('options' => array('School'=>'School books', 'PUC and CET'=>'PUC and CET books', 'Engineering'=>'Engineering books'
                                 , 'Commerce and Management'=>'Commerce and Management books', 'Arts and Culture'=>'Arts and Culture books', 'Non academic'=>'Non academic books'),
-                                'selected' => 'School books',
+                                'selected' => $this->Session->read('Books.stream'),
                                 'label' => array('class' => 'control-label','text' => '')
                                 ));
     }
 echo'</div>';
 	echo '<button type="submit" class="btn btn-primary submit-button">Go</button>';
 	echo $this->Form->end();
-	echo "</div><hr/>";
+	echo "</div></div><hr/>";
+
+if($books){
+echo "<h1>".$books[0]['Book']['status']." ".$books[0]['Book']['stream']." books"."</h1>";
+
+}
+else
+{
+  echo "<h1>No books were found, select different commbination and click Go</h1>";
+}
 
 if($books){
         // our table header, we can sort the data Book the paginator sort() method!
@@ -72,7 +73,7 @@ if($books){
                     echo $this->Form->input('requesterName', array('value' =>$this->Session->read('Requester.name'),'type' => 'hidden'));
                     echo $this->Form->input('requesterEmail', array('value' =>$this->Session->read('Requester.email'),'type' => 'hidden'));
                     echo $this->Form->input('requesterMobile', array('value' =>$this->Session->read('Requester.mobile'),'type' => 'hidden'));
-                    echo "<div class='col-md-3'><button class='btn btn-default' type='submit' >Request as {$this->Session->read('Requester.name')}</button></div>";
+                    echo "<div class='col-md-3'><button class='btn btn-default' type='submit' >Request for institute</button></div>";
                     //echo $this->Form->end(__('Request'));
                     echo "<div class='col-md-3'><a role='button' class='btn btn-default' href='/dbrb/request/index/".$index['Book']['id']."' >Request with another id</a></div>";
                 }

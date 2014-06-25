@@ -9,7 +9,11 @@
 class BooksController extends AppController {
     public $components = array('Paginator','Search.Prg');
 
+
     public function index(){
+
+        $this->Session->write('Books.status', $this->params['named']['status']);
+        $this->Session->write('Books.stream', $this->params['named']['stream']);
 
         $this->Prg->commonProcess();
         $this->Paginator->settings['conditions'] = $this->Book->parseCriteria($this->Prg->parsedParams());

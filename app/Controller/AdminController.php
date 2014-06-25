@@ -56,7 +56,7 @@ class AdminController extends AppController
             $this->Book->id = $id;
             if ($this->Book->save($this->request->data)) {
                 $this->Session->setFlash(__('The data has been saved'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => '../admin/index'));
 
             } else {
                 $this->Session->setFlash(__('The data could not be saved. Please, try again.'));

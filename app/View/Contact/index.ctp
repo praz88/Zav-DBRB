@@ -45,3 +45,5 @@
 <p><a href="http://zavfoundation.org/zav/wp-content/uploads/2013/08/DBRB-Collection-Note.pdf">DBRB-Collection-Note</a></p>
 <p><a href="http://zavfoundation.org/zav/wp-content/uploads/2013/08/DBRB-Delivery-Note1.pdf">DBRB-Delivery-Note1</a></p>
 					</article>
+
+					<br/><br/><br/><br/>

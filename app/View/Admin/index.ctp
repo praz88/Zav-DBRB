@@ -1,4 +1,4 @@
-
+<br/>
 
 <?php
 $paginator = $this->Paginator;
