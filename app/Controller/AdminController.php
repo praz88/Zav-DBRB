@@ -19,19 +19,29 @@ class AdminController extends AppController
     public function insert() 
     {
         $this->loadModel('Book');
-        if ($this->request->is('post')) {
+        if ($this->request->is('post')) 
+        {
             $this->Book->create();
-            if ($this->Book->save($this->request->data)) {
-                $this->Session->setFlash(__('The data has been saved'));
-                return $this->redirect(array('action' => 'index'));
-
-            } else {
-                $this->Session->setFlash(__('The data could not be saved. Please, try again.'));
+            if ($this->Book->validates()) 
+            {
+                if ($this->Book->save($this->request->data)) 
+                {
+                    $this->Session->setFlash(__('The data has been saved'));
+                    return $this->redirect(array('action' => 'index'));
+                } 
+                else {
+                    $this->Session->setFlash(__('The data could not be saved. Please, try again.'));
+                }
+            }
+            else 
+            {
+                $errors = $this->Book->invalidFields();
+                //$this->Session->setFlash(__(implode(',', $errors)));
             }
         }
 
     }
-
+    
     public function delete($id)
     {
         $this->loadModel('Book');
