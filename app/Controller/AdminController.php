@@ -21,9 +21,11 @@ class AdminController extends AppController
         $this->loadModel('Book');
         if ($this->request->is('post')) 
         {
-            $this->Book->create();
-            if ($this->Book->validates()) 
+            $this->Book->set($this->request->data);
+
+            if ($this->Book->validates())
             {
+                $this->Book->create();
                 if ($this->Book->save($this->request->data)) 
                 {
                     $this->Session->setFlash(__('The data has been saved'));
@@ -35,7 +37,7 @@ class AdminController extends AppController
             }
             else 
             {
-                $errors = $this->Book->invalidFields();
+                $errors = $this->Book->validationErrors;
                 //$this->Session->setFlash(__(implode(',', $errors)));
             }
         }
