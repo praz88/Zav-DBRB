@@ -26,7 +26,7 @@ class UsersController extends AppController {
             /* login and redirect to url set in app controller */
             if (!empty($this->request->data['User']) && $this->Auth->login()) {
 
-                $this->Session->write('Admin.username', ($this->request->data['User']));
+                $this->Session->write('Admin.username', ($this->request->data['User']['username']));
 
                 return $this->redirect(array('controller' => 'admin','action' => 'index?limit=5'));
             }
