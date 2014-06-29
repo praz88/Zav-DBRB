@@ -58,7 +58,17 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li><?php echo $this->Html->link('Books', array('action'=>'../books/index/status:'.$this->Session->read('Books.status').'/stream:'.$this->Session->read('Books.stream'))); ?></li>
+                <li><?php
+                if($this->Session->read('Books.status') != null){
+                echo $this->Html->link('Books', array('action'=>'../books/index/status:'.$this->Session->read('Books.status').'/stream:'.$this->Session->read('Books.stream')));
+                 }
+                 else{
+                  echo $this->Html->link('Books', array('action'=>'../books/index/status:Available/stream:School books'));
+
+                 }
+
+                 ?></li>
+
                 <li><?php echo $this->Html->link('Donate', array('action'=>'../donate/')); ?></li>
                 <li><?php echo $this->Html->link('Institute', array('action'=>'../institute/')); ?></li>
                <li><?php echo $this->Html->link('Admin', array('action'=>'../admin/index?limit=5')); ?></li>

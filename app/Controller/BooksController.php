@@ -17,6 +17,11 @@ class BooksController extends AppController {
 
     public function index(){
 
+        if($this->Session->read('NewUser.status') == null)
+        {
+            $this->Session->write('NewUser.status', 'Visited');
+        }
+
         if( $this->params['named']['status'] != null){
         $this->Session->write('Books.status', $this->params['named']['status']);
         $this->Session->write('Books.stream', $this->params['named']['stream']);

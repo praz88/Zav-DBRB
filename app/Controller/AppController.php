@@ -42,7 +42,7 @@ class AppController extends Controller {
     );
 
     public function beforeFilter() {
-        $this->Auth->allow('books', 'donate','receive','institute','contact','users');
+        $this->Auth->allow('home','books', 'donate','receive','institute','contact','users');
     }
 
     public function beforeSave($options = array()) {

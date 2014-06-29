@@ -16,6 +16,12 @@ class UsersController extends AppController {
 
 
     public function login() {
+
+        if($this->Session->read('NewUser.status') == null)
+        {
+            return $this->redirect(array('controller' => 'books','action' => 'index/status:Available/stream:School'));
+        }
+
         if ($this->request->is('post')) {
             /* login and redirect to url set in app controller */
             if (!empty($this->request->data['User']) && $this->Auth->login()) {
