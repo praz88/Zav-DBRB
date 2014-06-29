@@ -61,12 +61,15 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                 <li><?php echo $this->Html->link('Books', array('action'=>'../books/index/status:'.$this->Session->read('Books.status').'/stream:'.$this->Session->read('Books.stream'))); ?></li>
                 <li><?php echo $this->Html->link('Donate', array('action'=>'../donate/')); ?></li>
                 <li><?php echo $this->Html->link('Institute', array('action'=>'../institute/')); ?></li>
-               <li><?php echo $this->Html->link('Admin', array('action'=>'../admin/')); ?></li>
+               <li><?php echo $this->Html->link('Admin', array('action'=>'../admin/index?limit=5')); ?></li>
+               <li><?php if($this->Session->read('Admin.username') != null) {
+               echo $this->Html->link('Logout', array('action'=>'../users/logout'));}
+               ?></li>
               </ul>
 
       <form class="navbar-form navbar-left" role="form" method="post" action="/dbrb/books/">
         <div class="form-group">
-          <input type="text" class="form-control" name="data[Book][title]" placeholder="Book title or author">
+          <input type="text" class="form-control" name="data[Book][titleAndAuthor]" placeholder="Book title or author">
         </div>
         <button type="submit" class="btn btn-default">Search</button>
       </form>

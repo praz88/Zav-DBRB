@@ -31,8 +31,28 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    //public $components = array('DebugKit.Toolbar','Session');
+//'DebugKit.Toolbar',
+    public $components = array(
+        'Session',
+        /* add Auth component and set  the urls that will be loaded after the login and logout actions is performed */
+        'Auth' => array(
+            'loginRedirect' => array('controller' => 'admin', 'action' => 'index?limit=5'),
+            'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
+        )
+    );
 
+    public function beforeFilter() {
+        $this->Auth->allow('books', 'donate','receive','institute','contact','users');
+    }
+
+    public function beforeSave($options = array()) {
+
+        /* password hashing */
+        if (isset($this->data[$this->alias]['password'])) {
+            $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
+        }
+        return true;
+    }
     public $helpers = array(
         'Form' => array('className' => 'Bs3Form')
     );

@@ -2,6 +2,11 @@
 
 class RequestController extends AppController {
     public $components = array('Paginator');
+    public function beforeFilter() {
+        parent::beforeFilter();
+        // Allow users to register and logout.
+        $this->Auth->allow('index');
+    }
     // var $uses=array('Book');
     public function index($id)
     {
@@ -22,7 +27,7 @@ class RequestController extends AppController {
 
         }else{
             $book = $this->Book->find('first',
-                array('fields' => array('title','stream','isbn','donatorName','holder','requesterName', 'requesterEmail', 'requesterMobile'),
+                array('fields' => array('titleAndAuthor','stream','isbn','holder','requesterName', 'requesterEmail', 'requesterMobile'),
                     'conditions' => array('Book.id' => $id)
                 )
             );

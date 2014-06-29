@@ -5,7 +5,27 @@ $paginator = $this->Paginator;
 
 //second part
 echo "<div class='container'>";
-echo "<fieldset><legend> View Book Records or "; echo $this->Html->link('Insert Books', array('action'=>'../admin/insert'));echo "</legend>";
+$page_params = $this->Paginator->params();
+$limit = $page_params['limit'];
+$options = array( 5 => '5', 10 => '10', 20 => '20' );
+
+echo "<fieldset><legend><div class='row'><div class='col-md-9'>";
+echo $this->Form->create();
+echo "Viewing ".$this->Form->select('limit', $options, array(
+    'value'=>$limit,
+    'default'=>5,
+    'empty' => FALSE,
+    'onChange'=>'$(this).parent().attr("action", "/dbrb/admin?limit=" + $(this).val());this.form.submit();',
+    'name'=>'limit'
+    )
+)." Book Records ".$this->Form->end();
+
+
+echo "</div><div class='col-md-3'><a class='btn btn-primary' href='../admin/insert' >Insert a new book</a>";
+
+
+
+echo "</div></div><br/></legend>";
 
 if($books)
 {
@@ -13,36 +33,33 @@ if($books)
         echo "<div class='row'>";
             // in the sort method, ther first parameter is the same as the column name in our table
             // the second parameter is the header label we want to display in the view
-            echo "<div class='col-md-2'>" . $paginator->sort('stream', 'Sort by Stream') . "</div>";
-            echo "<div class='col-md-2'>" . $paginator->sort('donatorName', 'Sort by Donator') . "</div>";
-            echo "<div class='col-md-2'>" . $paginator->sort('requesterName', 'Sort by Requester') . "</div>";
-            echo "<div class='col-md-2'>" . $paginator->sort('status', 'Sort by Status') . "</div>";
-            echo "<div class='col-md-2'>" . $paginator->sort('adminName', 'Sort by Admin') . "</div>";
-
+            echo "<div class='col-md-4'>" . $paginator->link('Show books not received from donor', array('sort' => 'status', 'direction' => 'desc')) . "</div>";
+            echo "<div class='col-md-4'>" . $paginator->link('Show books requested but not donated',array('sort' => 'requesterName', 'direction' => 'desc')) . "</div>";
+            echo "<div class='col-md-4'>" . $paginator->sort('adminName', 'Sort by Admin responsible') . "</div>";
         echo "</div><hr/>";
         // loop through the book's records
         foreach( $books as $index ){
             echo "<div class='row'>";
-            	echo "<div class='col-md-3'>Stream: {$index['Book']['stream']}</div>";
-				echo "<div class='col-md-3'>Title: {$index['Book']['title']}</div>";
-                echo "<div class='col-md-3'>Donator: {$index['Book']['donatorName']}</div>";
-                echo "<div class='col-md-3'>Donator Email: {$index['Book']['donatorEmail']}</div>";
+            	echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Stream: {$index['Book']['stream']}</div></div>";
+				echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Title and Author: {$index['Book']['titleAndAuthor']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Donor: {$index['Book']['donorName']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Donor Email:  {$index['Book']['donorEmail']}</div></div>";
             echo "</div><div class='row'>";
-                echo "<div class='col-md-3'>Donator Mobile: {$index['Book']['donatorMobile']}</div>";
-                echo "<div class='col-md-3'>Requester: {$index['Book']['requesterName']}</div>";
-                echo "<div class='col-md-3'>Requester Email: {$index['Book']['requesterEmail']}</div>";
-                echo "<div class='col-md-3'>Requester Mobile: {$index['Book']['requesterMobile']}</div>";
+                echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Donor Mobile:  {$index['Book']['donorMobile']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Requester:  {$index['Book']['requesterName']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Requester Email: {$index['Book']['requesterEmail']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Requester Mobile: {$index['Book']['requesterMobile']}</div></div>";
 
             echo "</div><div class='row'>";
-                echo "<div class='col-md-3'>Status: {$index['Book']['status']}</div>";
-                echo "<div class='col-md-3'>Admin name: {$index['Book']['adminName']}</div>";
-                echo "<div class='col-md-3'>"//.$this->Form->postLink('Delete',
+                echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Status: {$index['Book']['status']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Last edited by Admin: {$index['Book']['adminName']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2'> <div class='panel-heading book-info'>"//.$this->Form->postLink('Delete',
                                     //array('action' => 'delete', $index['Book']['id']),
                                     //array('class'=>'button red', 'confirm' => 'Are you sure You wish to delete this record?'))."  "
                                     .$this->Form->postLink('Edit book details',
                                     array('action' => 'edit', $index['Book']['id']),
-                                    array('class'=>'button red', 'confirm' => 'Are you sure You wish to edit this record?'))."</div>";
-				echo "<div class='col-md-3' id=\"bookInfo-{$index['Book']['isbn']}\"><a href='#' id='getBook' onclick=\"getInfo('{$index['Book']['isbn']}')\">Get Book Info</a></div>";
+                                    array('class'=>'button red', 'confirm' => 'Are you sure You wish to edit this record?'))."</div></div>";
+				echo "<div class='panel panel-warning col-md-2' id=\"bookInfo-{$index['Book']['isbn']}\"><div class='panel-heading book-info'><a href='#' id='getBook' onclick=\"getInfo('{$index['Book']['isbn']}')\">Get Book Info</a></div></div>";
 
             echo "</div><hr/>";
             }

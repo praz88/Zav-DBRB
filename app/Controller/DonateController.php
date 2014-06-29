@@ -8,6 +8,11 @@
 
 class DonateController extends AppController {
     public $components = array('Paginator');
+    public function beforeFilter() {
+        parent::beforeFilter();
+        // Allow users to register and logout.
+        $this->Auth->allow('index');
+    }
 
     public function index() {
         //index direcly maps to the view's index.ctp

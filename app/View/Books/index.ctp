@@ -35,12 +35,12 @@ echo'</div>';
 	echo "</div></div><hr/>";
 
 if($books){
-echo "<h1>".$books[0]['Book']['status']." ".$books[0]['Book']['stream']." books"."</h1>";
+echo "<h1>".$books[0]['Book']['status']." ".$books[0]['Book']['stream']." books"."</h1><hr/>";
 
 }
 else
 {
-  echo "<h1>No books were found, select different commbination and click Go</h1>";
+  echo "<h1>No books were found, select different combination and click Go</h1><hr/>";
 }
 
 if($books){
@@ -49,11 +49,11 @@ if($books){
         foreach( $books as $index ){
             echo "<div class='row'>";
             	echo "<div class='col-md-3'><img src=\"http://covers.openlibrary.org/b/isbn/{$index['Book']['isbn']}-S.jpg\" /></div>";
-				echo "<div class='col-md-3'>Title: {$index['Book']['title']}</div>";
+				echo "<div class='col-md-3'>Title and Author: {$index['Book']['titleAndAuthor']}</div>";
                 echo "<div class='col-md-3'>Status: {$index['Book']['status']}</div>";
 				echo "<div class='col-md-3' id=\"bookInfo-{$index['Book']['isbn']}\"><a href='#' class='btn btn-default' id='getBook' onclick=\"getInfo('{$index['Book']['isbn']}')\">Get Book Info</a></div>";
                 echo "</div><div class='row'>";
-                echo "<div class='col-md-3'>Donated by: {$index['Book']['donatorName']}</div>";
+                echo "<div class='col-md-3'>Donated by: {$index['Book']['donorName']}</div>";
                 if($index['Book']['status'] == "Donated"){
                    echo "<div class='col-md-3'>Received by: {$index['Book']['requesterName']}</div>";
                 }
@@ -91,3 +91,8 @@ if($books){
 
 }
 ?>
+
+<br/>
+<br/>
+<br/>
+<br/>

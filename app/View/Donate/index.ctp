@@ -7,11 +7,43 @@
                     'options' => array('School'=>'School books', 'PUC and CET'=>'PUC and CET books', 'Engineering'=>'Engineering books'
                                                                    , 'Commerce and Management'=>'Commerce and Management books', 'Arts and Culture'=>'Arts and Culture books', 'Non academic'=>'Non academic books'),
                                                                    'selected' => 'School books'));?>
-       <?php echo $this->Form->input('title');?>
-       <?php echo $this->Form->input('isbn');?>
-       <?php echo $this->Form->input('donatorName');?>
-       <?php echo $this->Form->input('donatorEmail');?>
-       <?php echo $this->Form->input('donatorMobile');?>
+       <?php echo $this->Form->input('status', array('value' =>"Not received", 'type' => 'hidden'));?>
+       <?php echo $this->Form->input('titleAndAuthor',
+                              array(
+                              'required' => true,
+                              'placeholder' => 'Title and author is compulsory',
+                              'type' => 'text'
+                              ));?>
+       <?php echo $this->Form->input('isbn',
+       array(
+                                            'required' => false,
+                                            'placeholder' => 'Enter book ISBN number',
+                                            'type' => 'text'
+                                            ));?>
+       <?php echo $this->Form->input('donorName',
+       array(
+                                     'required' => true,
+                                     'placeholder' => 'Enter your name',
+                                     'type' => 'text'
+                                     ));?>
+       <?php echo $this->Form->input('donorEmail',
+       array(
+                                     'required' => false,
+                                     'placeholder' => 'Enter your email',
+                                     'type' => 'email'
+                                     ));?>
+       <?php echo $this->Form->input('donorMobile',
+       array(
+                                     'required' => true,
+                                     'placeholder' => 'Enter your mobile number for us to contact you',
+                                     'type' => 'number'
+                                     ));?>
+       <?php echo $this->Form->input('donorAddress',
+       array(
+                                     'required' => true,
+                                     'placeholder' => 'Enter your contact address',
+                                     'type' => 'text'
+                                     ));?>
     </fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
