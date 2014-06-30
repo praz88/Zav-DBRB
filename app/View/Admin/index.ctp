@@ -1,99 +1,79 @@
-<div class="container">
+<br/>
+
 <?php
 $paginator = $this->Paginator;
-echo "<hr/><div><h4> Select and click Go</h4>";
-                                        echo "<div class='form-inline'><div class='form-group'>";
-	echo $this->Form->create();
 
-if($books){
-	echo $this->Form->input('status', array('options' => array('Available'=>'Available', 'Donated'=>'Donated', 'Requested'=>'Requested'),
-                                            'selected' =>  $books[0]['Book']['status'],
-                                            'label' => array('class' => 'control-label','text' => '')
-                                             ));
-    echo $this->Form->input('stream', array('options' => array('School'=>'School books', 'PUC and CET'=>'PUC and CET books', 'Engineering'=>'Engineering books'
-                            , 'Commerce and Management'=>'Commerce and Management books', 'Arts and Culture'=>'Arts and Culture books', 'Non academic'=>'Non academic books'),
-                            'selected' => $books[0]['Book']['stream'],
-                            'label' => array('class' => 'control-label','text' => '')
-                            ));
-    }
-    else{
+//second part
+echo "<div class='container'>";
+$page_params = $this->Paginator->params();
+$limit = $page_params['limit'];
+$options = array( 5 => '5', 10 => '10', 20 => '20' );
+
+echo "<fieldset><legend><div class='row'><div class='col-md-9'>";
+echo $this->Form->create();
+echo "Viewing ".$this->Form->select('limit', $options, array(
+    'value'=>$limit,
+    'default'=>5,
+    'empty' => FALSE,
+    'onChange'=>'$(this).parent().attr("action", "/dbrb/admin?limit=" + $(this).val());this.form.submit();',
+    'name'=>'limit'
+    )
+)." Book Records ".$this->Form->end();
 
 
-    	echo $this->Form->input('status', array('options' => array('Available'=>'Available', 'Donated'=>'Donated', 'Requested'=>'Requested'),
-                                                'selected' =>  $this->Session->read('Books.status'),
-                                                'label' => array('class' => 'control-label','text' => '')
-                                                 ));
-        echo $this->Form->input('stream', array('options' => array('School'=>'School books', 'PUC and CET'=>'PUC and CET books', 'Engineering'=>'Engineering books'
-                                , 'Commerce and Management'=>'Commerce and Management books', 'Arts and Culture'=>'Arts and Culture books', 'Non academic'=>'Non academic books'),
-                                'selected' => $this->Session->read('Books.stream'),
-                                'label' => array('class' => 'control-label','text' => '')
-                                ));
-    }
-echo'</div>';
-	echo '<button type="submit" class="btn btn-primary submit-button">Go</button>';
-	echo $this->Form->end();
-	echo "</div></div><hr/>";
+echo "</div><div class='col-md-3'><a class='btn btn-primary' href='../admin/insert' >Insert a new book</a>";
 
-if($books){
-echo "<h1>".$books[0]['Book']['status']." ".$books[0]['Book']['stream']." books"."</h1><hr/>";
 
-}
-else
+
+echo "</div></div><br/></legend>";
+
+if($books)
 {
-  echo "<h1>No books were found, select different combination and click Go</h1><hr/>";
-}
 
-if($books){
-        // our table header, we can sort the data Book the paginator sort() method!
+        echo "<div class='row'>";
+            // in the sort method, ther first parameter is the same as the column name in our table
+            // the second parameter is the header label we want to display in the view
+            echo "<div class='col-md-4'>" . $paginator->link('Show books not received from donor', array('sort' => 'status', 'direction' => 'desc')) . "</div>";
+            echo "<div class='col-md-4'>" . $paginator->link('Show books requested but not donated',array('sort' => 'requesterName', 'direction' => 'desc')) . "</div>";
+            echo "<div class='col-md-4'>" . $paginator->sort('adminName', 'Sort by Admin responsible') . "</div>";
+        echo "</div><hr/>";
         // loop through the book's records
         foreach( $books as $index ){
-            echo "<div class='row'>";
-            	echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Image: <img alt='Unavailable' src=\"http://covers.openlibrary.org/b/isbn/{$index['Book']['isbn']}-S.jpg\" /></div></div>";
-				echo "<div class='panel panel-warning col-md-3'><div class='panel-heading book-info'>Title and Author: {$index['Book']['titleAndAuthor']}</div></div>";
-                echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Status: {$index['Book']['status']}</div></div>";
-				echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info' id=\"bookInfo-{$index['Book']['isbn']}\"><a href='#' class='btn btn-default' id='getBook' onclick=\"getInfo('{$index['Book']['isbn']}')\">Get Book Info</a></div></div>";
-                echo "</div><div class='row'>";
-                echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Donated by: {$index['Book']['donorName']}</div></div>";
-                if($index['Book']['status'] == "Donated"){
-                   echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Received by: {$index['Book']['requesterName']}</div></div>";
-                }
-                else if($index['Book']['status'] == "Requested"){
-                echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Requested by: {$index['Book']['requesterName']}</div></div>";
-                }
-                else{
+            echo "<div class='panel panel-default' style='padding-left:25px;margin-right:20px;padding-top:25px;padding-right:25px'><div class='row'>";
+            	echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Stream: {$index['Book']['stream']}</div></div>";
+				echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Title and Author: {$index['Book']['titleAndAuthor']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Donor: {$index['Book']['donorName']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Donor Email:  {$index['Book']['donorEmail']}</div></div>";
+            echo "</div><div class='row'>";
+                echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Donor Mobile:  {$index['Book']['donorMobile']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Requester:  {$index['Book']['requesterName']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Requester Email: {$index['Book']['requesterEmail']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Requester Mobile: {$index['Book']['requesterMobile']}</div></div>";
 
-                if($this->Session->read('Requester.name') != null)
-                {
-                    //echo $this->Form->create('Book');
-                    echo $this->Form->create(
-                                 'Book' ,
-                                 array( 'url'     => array( 'controller' => 'request/index/'.$index['Book']['id']))
-                             );
-                    echo $this->Form->input('status', array('value' =>"Requested", 'type' => 'hidden'));
-                    echo $this->Form->input('requesterName', array('value' =>$this->Session->read('Requester.name'),'type' => 'hidden'));
-                    echo $this->Form->input('requesterEmail', array('value' =>$this->Session->read('Requester.email'),'type' => 'hidden'));
-                    echo $this->Form->input('requesterMobile', array('value' =>$this->Session->read('Requester.mobile'),'type' => 'hidden'));
-                    echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'><button class='btn btn-default' type='submit' >Request for institute</button></div></div>";
-                    //echo $this->Form->end(__('Request'));
-                    echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'><a role='button' class='btn btn-default' href='/dbrb/request/index/".$index['Book']['id']."' >Request with another id</a></div></div>";
-                }
-                else
-                {
-                    echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'><a role='button' class='btn btn-default' href='/dbrb/request/index/".$index['Book']['id']."' >Request</a></div></div>";
-                }
-             }
+            echo "</div><div class='row'>";
+                echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Status: {$index['Book']['status']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Last edited by Admin: {$index['Book']['adminName']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2 book-div'> <div class='panel-heading book-info'>"//.$this->Form->postLink('Delete',
+                                    //array('action' => 'delete', $index['Book']['id']),
+                                    //array('class'=>'button red', 'confirm' => 'Are you sure You wish to delete this record?'))."  "
+                                    .$this->Form->postLink('Edit book details',
+                                    array('action' => 'edit', $index['Book']['id']),
+                                    array('class'=>'button red', 'confirm' => 'Are you sure You wish to edit this record?'))."</div></div>";
+				echo "<div class='panel panel-warning col-md-2 book-div' id=\"bookInfo-{$index['Book']['isbn']}\"><div class='panel-heading book-info'><a href='#' id='getBook' onclick=\"getInfo('{$index['Book']['isbn']}')\">Get Book Info</a></div></div>";
 
-            echo "</div><hr/>";
-        } 
-
-// pagination section
-
+            echo "</div></div><br/>";
+            }
 
 }
 ?>
-
-<br/>
-<br/>
-<br/>
-<br/>
+<div class="pagination pagination-large" style="margin-left:38%">
+    <ul class="pagination">
+            <?php
+                echo $paginator->prev(__('prev'), array('tag' => 'li'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a'));
+                echo $paginator->numbers(array('separator' => '','currentTag' => 'a', 'currentClass' => 'active','tag' => 'li','first' => 1));
+                echo $paginator->next(__('next'), array('tag' => 'li','currentClass' => 'disabled'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a'));
+            ?>
+        </ul>
+    </div>
+    </div>
 </div>

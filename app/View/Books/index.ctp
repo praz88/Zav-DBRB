@@ -1,4 +1,4 @@
-
+<div class="container">
 <?php
 $paginator = $this->Paginator;
 echo "<hr/><div><h4> Select and click Go</h4>";
@@ -47,18 +47,18 @@ if($books){
         // our table header, we can sort the data Book the paginator sort() method!
         // loop through the book's records
         foreach( $books as $index ){
-            echo "<div class='row'>";
-            	echo "<div class='col-md-3'><img src=\"http://covers.openlibrary.org/b/isbn/{$index['Book']['isbn']}-S.jpg\" /></div>";
-				echo "<div class='col-md-3'>Title and Author: {$index['Book']['titleAndAuthor']}</div>";
-                echo "<div class='col-md-3'>Status: {$index['Book']['status']}</div>";
-				echo "<div class='col-md-3' id=\"bookInfo-{$index['Book']['isbn']}\"><a href='#' class='btn btn-default' id='getBook' onclick=\"getInfo('{$index['Book']['isbn']}')\">Get Book Info</a></div>";
+            echo "<div class='panel panel-default' style='padding-left:25px;margin-right:20px;padding-top:25px;padding-right:25px'><div class='row'>";
+            	//echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Image: <img alt='Unavailable' src=\"http://covers.openlibrary.org/b/isbn/{$index['Book']['isbn']}-S.jpg\" /></div></div>";
+				echo "<div class='panel panel-warning col-md-3 book-div'><div class='panel-heading book-info'>Title and Author: {$index['Book']['titleAndAuthor']}</div></div>";
+                echo "<div class='panel panel-warning col-md-3 book-div'><div class='panel-heading book-info'>Status: {$index['Book']['status']}</div></div>";
+				echo "<div class='panel panel-warning col-md-3 book-div'><div class='panel-heading book-info' id=\"bookInfo-{$index['Book']['isbn']}\"><a href='#' class='btn btn-default' id='getBook' onclick=\"getInfo('{$index['Book']['isbn']}')\">Get Book Info</a></div></div>";
                 echo "</div><div class='row'>";
-                echo "<div class='col-md-3'>Donated by: {$index['Book']['donorName']}</div>";
+                echo "<div class='panel panel-warning col-md-3 book-div'><div class='panel-heading book-info'>Donated by: {$index['Book']['donorName']}</div></div>";
                 if($index['Book']['status'] == "Donated"){
-                   echo "<div class='col-md-3'>Received by: {$index['Book']['requesterName']}</div>";
+                   echo "<div class='panel panel-warning col-md-3 book-div'><div class='panel-heading book-info'>Received by: {$index['Book']['requesterName']}</div></div>";
                 }
                 else if($index['Book']['status'] == "Requested"){
-                echo "<div class='col-md-3'>Requested by: {$index['Book']['requesterName']}</div>";
+                echo "<div class='panel panel-warning col-md-3 book-div'><div class='panel-heading book-info'>Requested by: {$index['Book']['requesterName']}</div></div>";
                 }
                 else{
 
@@ -73,17 +73,17 @@ if($books){
                     echo $this->Form->input('requesterName', array('value' =>$this->Session->read('Requester.name'),'type' => 'hidden'));
                     echo $this->Form->input('requesterEmail', array('value' =>$this->Session->read('Requester.email'),'type' => 'hidden'));
                     echo $this->Form->input('requesterMobile', array('value' =>$this->Session->read('Requester.mobile'),'type' => 'hidden'));
-                    echo "<div class='col-md-3'><button class='btn btn-default' type='submit' >Request for institute</button></div>";
+                    echo "<div class='panel panel-warning col-md-3 book-div'><div class='panel-heading book-info'><button class='btn btn-default' type='submit' >Request for institute</button></div></div>";
                     //echo $this->Form->end(__('Request'));
-                    echo "<div class='col-md-3'><a role='button' class='btn btn-default' href='/dbrb/request/index/".$index['Book']['id']."' >Request with another id</a></div>";
+                    echo "<div class='panel panel-warning col-md-3 book-div'><div class='panel-heading book-info'><a role='button' class='btn btn-default' href='/dbrb/request/index/".$index['Book']['id']."' >Request with another id</a></div></div>";
                 }
                 else
                 {
-                    echo "<div class='col-md-3'><a role='button' class='btn btn-default' href='/dbrb/request/index/".$index['Book']['id']."' >Request</a></div>";
+                    echo "<div class='panel panel-warning col-md-3 book-div'><div class='panel-heading book-info'><a role='button' class='btn btn-default' href='/dbrb/request/index/".$index['Book']['id']."' >Request</a></div></div>";
                 }
              }
 
-            echo "</div><hr/>";
+            echo "</div></div><br/>";
         } 
 
 // pagination section
@@ -96,3 +96,4 @@ if($books){
 <br/>
 <br/>
 <br/>
+</div>

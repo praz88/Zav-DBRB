@@ -25,6 +25,7 @@
        <?php echo $this->Form->input('donorMobile', array('value' =>$books['Book']['donorMobile']));?>
          <?php echo $this->Form->input('donorAddress', array('value' =>$books['Book']['donorAddress']));?>
        <?php echo $this->Form->input('holder', array('value' =>$books['Book']['holder']));?>
+        <?php echo $this->Form->input('adminName', array('value' =>$this->Session->read('Admin.username'), 'type' => 'hidden'));?>
        <?php echo $this->Form->input('adminName', array('value' =>$this->Session->read('Admin.username'),'disabled' => 'disabled'));?>
        <?php echo $this->Form->input('requesterName', array('value' =>$books['Book']['requesterName']));?>
        <?php echo $this->Form->input('requesterEmail', array('value' =>$books['Book']['requesterEmail']));?>

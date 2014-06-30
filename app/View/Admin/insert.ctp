@@ -44,6 +44,8 @@
                                         ));?>
        <?php echo $this->Form->input('holder', array('value' =>'Zav Foundation','disabled' => 'disabled'));?>
        <?php echo $this->Form->input('adminName', array('value' =>$this->Session->read('Admin.username'),'disabled' => 'disabled'));?>
+       <?php echo $this->Form->input('adminName', array('value' =>$this->Session->read('Admin.username'),'type' => 'hidden'));?>
+
     </fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
