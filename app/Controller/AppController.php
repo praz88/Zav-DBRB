@@ -32,7 +32,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 //'DebugKit.Toolbar',
-    public $components = array(
+    public $components = array('DebugKit.Toolbar',
         'Session',
         /* add Auth component and set  the urls that will be loaded after the login and logout actions is performed */
         'Auth' => array(

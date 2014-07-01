@@ -16,28 +16,28 @@ class AdminController extends AppController
         $this->set('books', $data);
     }
 
-    public function insert() 
+    public function insert()
     {
         $this->loadModel('Book');
-        if ($this->request->is('post')) 
+        if ($this->request->is('post'))
         {
-                $this->Book->create();
-                if ($this->Book->save($this->request->data)) 
-                {
-                    $this->Session->setFlash(__('The data has been saved'));
-                    return $this->redirect(array('action' => 'index?limit=5'));
-                } 
-                else {
-                    $this->Session->setFlash(__('The data could not be saved. Please, try again.'));
-                }
+            $this->Book->create();
+            if ($this->Book->save($this->request->data))
+            {
+                $this->Session->setFlash(__('The data has been saved'));
+                return $this->redirect(array('action' => 'index?limit=5'));
+            }
+            else {
+                $this->Session->setFlash(__('The data could not be saved. Please, try again.'));
+            }
         }
 
     }
-    
+
     public function delete($id)
     {
         $this->loadModel('Book');
-        if ($this->request->is('get')) 
+        if ($this->request->is('get'))
         {
             throw new MethodNotAllowedException();
         }
@@ -51,18 +51,35 @@ class AdminController extends AppController
 
     public function edit($id)
     {
+        App::uses('CakeEmail', 'Network/Email');
+        $Email = new CakeEmail();
         $this->loadModel('Book');
         if (!empty($this->data))
         {
             if ($this->request->is('post')) {
-                    $this->Book->id = $id;
-                    if ($this->Book->save($this->request->data)) {
-                        $this->Session->setFlash(__('The data has been saved'));
-                        return $this->redirect(array('action' => '../admin/index?limit=5'));
+                $this->Book->id = $id;
+                if ($this->Book->save($this->request->data)) {
+                    $Email->from(array('info@zavfoundation.org' => 'Admin edited a book record - DBRB'));
+                    $Email->to(array('prazanth2006@gmail.com','madhurileo27@gmail.com','president@zavfoundation.org','satishbng@gmail.com'));
+                    $Email->subject('A book record was edited by '.$this->request->data['Book']['adminName']);
+                    $Email->send('Book details have been changed to :'."\n".
+                        'Title and author: '.$this->request->data['Book']['titleAndAuthor']."\n".
+                        'Stream: '.$this->request->data['Book']['stream']."\n".
+                        'Donor name: '.$this->request->data['Book']['donorName']."\n".
+                        'Donor email: '.$this->request->data['Book']['donorEmail']."\n".
+                        'Donor mobile: '.$this->request->data['Book']['donorMobile']."\n".
+                        'Donor address: '.$this->request->data['Book']['donorAddress']."\n".
+                        'Requester: '.$this->request->data['Book']['requesterName']."\n".
+                        'Requester email: '.$this->request->data['Book']['requesterEmail']."\n".
+                        'Requester mobile: '.$this->request->data['Book']['requesterMobile']."\n".
+                        'Requester address: '.$this->request->data['Book']['requesterAddress']."\n".
+                        'Status: '.$this->request->data['Book']['status']);
+                    $this->Session->setFlash(__('The data has been saved'));
+                    return $this->redirect(array('action' => '../admin/index?limit=5'));
 
-                    } else {
-                        $this->Session->setFlash(__('The data could not be saved. Please, try again.'));
-                    }
+                } else {
+                    $this->Session->setFlash(__('The data could not be saved. Please, try again.'));
+                }
             }
 
         }else{
