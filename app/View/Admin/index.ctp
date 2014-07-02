@@ -33,13 +33,13 @@ if($books)
         echo "<div class='row'>";
             // in the sort method, ther first parameter is the same as the column name in our table
             // the second parameter is the header label we want to display in the view
-            echo "<div class='col-md-4'>" . $paginator->link('Show books not received from donor', array('sort' => 'status', 'direction' => 'desc')) . "</div>";
-            echo "<div class='col-md-4'>" . $paginator->link('Show books requested but not donated',array('sort' => 'requesterName', 'direction' => 'desc')) . "</div>";
+            echo "<div class='col-md-4'>" . $paginator->link('Sort by book status', array('sort' => 'status', 'direction' => 'desc')) . "</div>";
+            echo "<div class='col-md-4'>" . $paginator->link('Sort by requester names',array('sort' => 'requesterName', 'direction' => 'desc')) . "</div>";
             echo "<div class='col-md-4'>" . $paginator->sort('adminName', 'Sort by Admin responsible') . "</div>";
         echo "</div><hr/>";
         // loop through the book's records
         foreach( $books as $index ){
-            echo "<div class='panel panel-default' style='padding-left:25px;margin-right:20px;padding-top:25px;padding-right:25px'><div class='row'>";
+            echo "<div class='panel panel-default' style='padding-left:25px;margin-right:20px;padding-top:25px;padding-right:15px'><div class='row'>";
             	echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Stream: {$index['Book']['stream']}</div></div>";
 				echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Title and Author: {$index['Book']['titleAndAuthor']}</div></div>";
                 echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Donor: {$index['Book']['donorName']}</div></div>";
@@ -53,13 +53,14 @@ if($books)
             echo "</div><div class='row'>";
                 echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Status: {$index['Book']['status']}</div></div>";
                 echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Last edited by Admin: {$index['Book']['adminName']}</div></div>";
+                echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Tansaction completion date: {$index['Book']['transactionCompletedOn']}</div></div>";
                 echo "<div class='panel panel-warning col-md-2 book-div'> <div class='panel-heading book-info'>"//.$this->Form->postLink('Delete',
                                     //array('action' => 'delete', $index['Book']['id']),
                                     //array('class'=>'button red', 'confirm' => 'Are you sure You wish to delete this record?'))."  "
                                     .$this->Form->postLink('Edit book details',
                                     array('action' => 'edit', $index['Book']['id']),
                                     array('class'=>'button red', 'confirm' => 'Are you sure You wish to edit this record?'))."</div></div>";
-				echo "<div class='panel panel-warning col-md-2 book-div' id=\"bookInfo-{$index['Book']['isbn']}\"><div class='panel-heading book-info'><a href='#' id='getBook' onclick=\"getInfo('{$index['Book']['isbn']}')\">Get Book Info</a></div></div>";
+
 
             echo "</div></div><br/>";
             }

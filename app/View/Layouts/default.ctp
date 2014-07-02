@@ -72,6 +72,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                 <li><?php echo $this->Html->link('Donate', array('action'=>'../donate/')); ?></li>
                 <li><?php echo $this->Html->link('Institute', array('action'=>'../institute/')); ?></li>
                <li><?php echo $this->Html->link('Admin', array('action'=>'../admin/index?limit=5')); ?></li>
+               <li><?php echo $this->Html->link('Stats', array('action'=>'../info/')); ?></li>
                <li><?php if($this->Session->read('Admin.username') != null) {
                echo $this->Html->link('Logout', array('action'=>'../users/logout'));}
                ?></li>
@@ -101,7 +102,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
     <footer>
         <div class="foot-fixed-bottom">
         <div class="container" style="text-align:center;">
-        <p style="font-color:white">© zavfoundation.com • Bangalore 2014</p></div>
+        <p style="font-color:white">© zavfoundation.org</p></div>
         </div>
         </footer>
   </div>

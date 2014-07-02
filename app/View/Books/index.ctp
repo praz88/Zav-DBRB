@@ -1,7 +1,9 @@
 <div class="container">
+
 <?php
+
 $paginator = $this->Paginator;
-echo "<hr/><div><h4> Select and click Go</h4>";
+echo "<div><h4> Select and click Go</h4>";
                                         echo "<div class='form-inline'><div class='form-group'>";
 	echo $this->Form->create();
 
@@ -47,7 +49,7 @@ if($books){
         // our table header, we can sort the data Book the paginator sort() method!
         // loop through the book's records
         foreach( $books as $index ){
-            echo "<div class='panel panel-default' style='padding-left:25px;margin-right:20px;padding-top:25px;padding-right:25px'><div class='row'>";
+            echo "<div class='panel panel-default' style='padding-left:25px;margin-right:20px;padding-top:25px;padding-right:15px'><div class='row'>";
             	//echo "<div class='panel panel-warning col-md-2'><div class='panel-heading book-info'>Image: <img alt='Unavailable' src=\"http://covers.openlibrary.org/b/isbn/{$index['Book']['isbn']}-S.jpg\" /></div></div>";
 				echo "<div class='panel panel-warning col-md-3 book-div'><div class='panel-heading book-info'>Title and Author: {$index['Book']['titleAndAuthor']}</div></div>";
                 echo "<div class='panel panel-warning col-md-3 book-div'><div class='panel-heading book-info'>Status: {$index['Book']['status']}</div></div>";

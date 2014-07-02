@@ -7,7 +7,7 @@
                     'options' => array('School'=>'School books', 'PUC and CET'=>'PUC and CET books', 'Engineering'=>'Engineering books'
                                                                    , 'Commerce and Management'=>'Commerce and Management books', 'Arts and Culture'=>'Arts and Culture books', 'Non academic'=>'Non academic books'),
                                                                    'selected' => 'School books'));?>
-       <?php echo $this->Form->input('status', array('value' =>"Not received", 'type' => 'hidden'));?>
+       <?php echo $this->Form->input('status', array('value' =>"Unavailable/Not received", 'type' => 'hidden'));?>
        <?php echo $this->Form->input('titleAndAuthor',
                               array(
                               'required' => true,
@@ -47,7 +47,5 @@
     </fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
-<br/>
-<br/>
-<br/>
-<br/>
+
+<br/><br/><br/><br/><br/><br/>

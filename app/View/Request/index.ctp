@@ -28,6 +28,11 @@
        'required' => true,
                                             'placeholder' => 'Enter your contact address',
                                             'type' => 'text'));?>
+        <?php echo $this->Form->input('reasonForRequesting', array(
+                                            'required' => true,
+                                            'placeholder' => 'What will be done with the books you get?',
+                                            'type' => 'text'));?>
+
     </fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
