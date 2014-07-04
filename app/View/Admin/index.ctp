@@ -53,7 +53,18 @@ if($books)
             echo "</div><div class='row'>";
                 echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Status: {$index['Book']['status']}</div></div>";
                 echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Last edited by Admin: {$index['Book']['adminName']}</div></div>";
-                echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>Tansaction completion date: {$index['Book']['transactionCompletedOn']}</div></div>";
+                
+                echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>
+                Donated to zav on: {$index['Book']['donateDate']}
+                </div></div>";
+                
+                echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>
+                Requested on: {$index['Book']['requestDate']}</div></div>";
+                
+                echo "</div><div class='row'>";
+                    echo "<div class='panel panel-warning col-md-2 book-div'><div class='panel-heading book-info'>
+                Donated to requester on: {$index['Book']['transactionCompletedOn']}</div></div>";
+                
                 echo "<div class='panel panel-warning col-md-2 book-div'> <div class='panel-heading book-info'>"//.$this->Form->postLink('Delete',
                                     //array('action' => 'delete', $index['Book']['id']),
                                     //array('class'=>'button red', 'confirm' => 'Are you sure You wish to delete this record?'))."  "
