@@ -22,9 +22,16 @@ class BooksController extends AppController {
             $this->Session->write('NewUser.status', 'Visited');
         }
 
-        if( $this->params['named']['status'] != null){
-        $this->Session->write('Books.status', $this->params['named']['status']);
-        $this->Session->write('Books.stream', $this->params['named']['stream']);
+        if($this->params['named'] != null)
+        {
+            if( $this->params['named']['status'] != null){
+            $this->Session->write('Books.status', $this->params['named']['status']);
+            $this->Session->write('Books.stream', $this->params['named']['stream']);
+            }
+
+            if( $this->params['named']['theme'] != null){
+                $this->Session->write('Theme.name', $this->params['named']['theme']);
+            }
         }
 
         $this->Prg->commonProcess();

@@ -33,7 +33,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         '/js/bootstrap.min.js',
         '/js/find-book.js'
     ));
-    echo $this->Html->css(array('bootstrap.min','bootstrap-theme.min','layout'));
+
+    if($this->Session->read('Theme.name')!= null){
+    echo $this->Html->css(array('bootstrap.min','bootstrap-theme-'.$this->Session->read('Theme.name').'.min','layout'));
+    }else{
+     echo $this->Html->css(array('bootstrap.min','bootstrap-theme.min','layout'));
+    }
     ?>
 
 
@@ -87,6 +92,19 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
               <ul class="nav navbar-nav navbar-right">
                 <li></li>
                 <li><?php echo $this->Html->link('Contact', array('action'=>'../contact/')); ?></li>
+                 <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Themes <span class="caret"></span></a>
+                          <ul class="dropdown-menu" role="menu">
+                          <li><a href="/dbrb/books/index/theme:">Default</a></li>
+                            <li><a href="/dbrb/books/index/theme:amelia">Amelia</a></li>
+                            <li><a href="/dbrb/books/index/theme:betterwindows">New windows</a></li>
+                            <li><a href="/dbrb/books/index/theme:black">Black</a></li>
+                            <li><a href="/dbrb/books/index/theme:cerulian">Cerulian</a></li>
+                            <li><a href="/dbrb/books/index/theme:cyborg">Cyborg</a></li>
+                            <li><a href="/dbrb/books/index/theme:dark">Darkly</a></li>
+                            <li><a href="/dbrb/books/index/theme:windows">Windows</a></li>
+                          </ul>
+               </li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
