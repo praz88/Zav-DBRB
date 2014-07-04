@@ -1,12 +1,21 @@
-After checking out the project:
+After downloading the project:
+
+
+Place the folder in "C:/wamp/www/"
+Rename the folder "from Zav-DBRB-Master" to "dbrb"
 
 Open PHPMyAdmin by right clicking on Wamp icon at the right bottom of your screen
 Now click on "Import" tab
 Click on "Choose file"
-Now traverse to the C:/wamp/www/Zav-DBRB directory
+Now traverse to the C:/wamp/www/dbrb directory
 Select dbrb.sql and import
 Now your database is ready
 
-Go to  C:/wamp/www/Zav-DBRB/app/config/database.php
-In this file change database name to "dbrb"
+Go to  C:/wamp/www/dbrb/app/config/database.php.default
+Rename this file to database.php
+Open the file and change the username and password of phpmyadmin to match yours
+Also change database name to "dbrb"
+
+If you want to use email feature, you can configure it in email.php in config folder
+
 You are good to go!

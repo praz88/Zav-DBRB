@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 02, 2014 at 07:36 PM
+-- Generation Time: Jul 04, 2014 at 06:22 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -33,21 +33,21 @@ CREATE TABLE IF NOT EXISTS `books` (
   `titleAndAuthor` varchar(50) DEFAULT NULL,
   `isbn` varchar(50) DEFAULT NULL,
   `donorName` varchar(50) DEFAULT NULL,
-  `donorEmail` varchar(100) NOT NULL,
-  `donorMobile` varchar(100) NOT NULL,
+  `donorEmail` varchar(100) DEFAULT NULL,
+  `donorMobile` varchar(100) DEFAULT NULL,
   `holder` varchar(50) DEFAULT NULL,
-  `adminName` varchar(100) NOT NULL,
+  `adminName` varchar(100) DEFAULT NULL,
   `requesterName` varchar(50) DEFAULT NULL,
-  `requesterEmail` varchar(100) NOT NULL,
-  `requesterMobile` varchar(100) NOT NULL,
+  `requesterEmail` varchar(100) DEFAULT NULL,
+  `requesterMobile` varchar(100) DEFAULT NULL,
   `requestDate` datetime DEFAULT NULL,
   `donateDate` datetime DEFAULT NULL,
   `transactionCompletedOn` datetime DEFAULT NULL,
-  `reasonForRequesting` varchar(100) NOT NULL,
+  `reasonForRequesting` varchar(100) DEFAULT NULL,
   `status` varchar(100) NOT NULL DEFAULT 'Available',
-  `stream` varchar(100) NOT NULL,
-  `donorAddress` varchar(100) NOT NULL,
-  `requesterAddress` varchar(100) NOT NULL,
+  `stream` varchar(100) DEFAULT NULL,
+  `donorAddress` varchar(100) DEFAULT NULL,
+  `requesterAddress` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 

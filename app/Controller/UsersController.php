@@ -11,7 +11,7 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('logout');
+        $this->Auth->allow('logout','add');
     }
 
 
